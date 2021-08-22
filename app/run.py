@@ -4,12 +4,21 @@ import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
 import joblib
 from sqlalchemy import create_engine
+
+import os
+from pathlib import Path
+
+_project_root = Path(__file__).resolve().parent.parent
+_default_sqlite_db = _project_root / "data/DisasterResponse.db"
+
+SQLALCHEMY_DATABASE_URI = os.environ.get(
+    "DATABASE_URL", f"sqlite:///{_default_sqlite_db}"
+)
 
 
 app = Flask(__name__)
