@@ -2,7 +2,6 @@ django
 gunicorn
 django-heroku
 plotly
-json
 pandas
 nltk
 flask
