@@ -3,7 +3,6 @@ import sys
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
-import fasttext
 
 
 
@@ -76,11 +75,6 @@ def clean_data(df):
     df.drop_duplicates(inplace=True)
     # remove NaN
     df.dropna(subset=['related'],axis=0,inplace=True)
-    # remove any non-english messages
-    #pretrained_lang_model = "/home/workspace/data/lid.176.ftz"
-    #language_model = fasttext.load_model(pretrained_lang_model)
-    #res = df.message.apply(lambda x: language_model.predict(x,k=1)[0][0]=='__label__en')
-    #df=df[res==True]
     return df
 
 
