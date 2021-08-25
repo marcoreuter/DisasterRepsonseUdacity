@@ -16,11 +16,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
-import dill
+from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+
 import pickle
-from joblib.externals.loky import set_loky_pickler
-set_loky_pickler("dill")
-import time
 
 from sklearn.metrics import classification_report
 
@@ -47,8 +47,8 @@ def load_data(database_filepath):
     X = df.message
     y = df.iloc[:,4:]
     category_names=y.columns
-    X = X.head(1000)
-    y = y.head(1000)
+    #X = X.head(1000)
+    #y = y.head(1000)
      
     return X, y, category_names
 
@@ -99,17 +99,21 @@ def build_model():
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
-        ('clf', MultiOutputClassifier(RandomForestClassifier())), 
-    ])
+        ('clf', MultiOutputClassifier(RandomForestClassifier())),
+        ])
     
-    parameters = {
+    parameters = [
+        {
         'vect__ngram_range': ((1, 1), (1, 2)),
-        #'vect__max_df': (0.5, 0.75, 1.0),
-        #'vect__max_features': (None, 50, 100),
-        #'tfidf__use_idf': (True, False),
-        #'clf__estimator__n_estimators': [50, 100, 200],
-        #'clf__estimator__min_samples_split': [2, 3, 4]
+        'vect__max_df': (0.5, 1.0),
+        'clf__estimator': [RandomForestClassifier()]   
+        },
+        {'vect__ngram_range': ((1, 1), (1, 2)),
+        'vect__max_df': (0.5, 1.0),
+        'clf__estimator': [KNeighborsClassifier()]
         }
+    ]
+    
 
     cv = GridSearchCV(pipeline, param_grid=parameters,n_jobs=-1,scoring='f1_weighted',verbose=1,cv=3)
     return cv
@@ -148,14 +152,11 @@ def main():
         print('Building model...')
         model = build_model()
         
-        t0=time.time()
         print('Training model...')
         model.fit(X_train, Y_train)
         
         print('Evaluating model...')
         evaluate_model(model, X_test, Y_test, category_names)
-        t1=time.time()
-        print("Time used:", t1-t0)
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
 

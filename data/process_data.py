@@ -5,7 +5,6 @@ import numpy as np
 from sqlalchemy import create_engine
 
 
-
 def load_data(messages_filepath, categories_filepath):
     """
     Load the message and categories data

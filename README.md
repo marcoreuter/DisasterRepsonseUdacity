@@ -44,10 +44,8 @@ The raw data is in form of natural language. It is processed using the following
  - Crossvalidation is used to select the final model / paremeters. The canidate models include
 	 - Random forest
 	 - K-nearest Neighbours
-	 - Linear SVC
 	 - MLP Classifier
 	 - AdaBoost Classifier
-	 - Quadratic Discriminant Analysis
 
 This ML pipeline is stored and the final model is exported.
 
