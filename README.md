@@ -44,8 +44,6 @@ The raw data is in form of natural language. It is processed using the following
  - Crossvalidation is used to select the final model / paremeters. The canidate models include
 	 - Random forest
 	 - K-nearest Neighbours
-	 - MLP Classifier
-	 - AdaBoost Classifier
 
 This ML pipeline is stored and the final model is exported.
 ##### The model training may take a long time to complete through the amount of folds in the cross validation and the size of the dataset!
