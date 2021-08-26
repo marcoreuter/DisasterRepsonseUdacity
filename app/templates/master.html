@@ -57,6 +57,11 @@
         <div class="page-header">
             <h1 class="text-center">Overview of Training Dataset</h1>
         </div>
+  		<div>
+          <h2 class="text-center">Wordcloud Representation of the Messages</h2>
+  		</div>
+  <center> <img src="/static/wordcloud.png" alt="Wordcloud"> </center>
+
     {% endblock %}
 
     {% for id in ids %}
@@ -71,6 +76,5 @@
         Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
     }
 </script>
-
 </body>
 </html>

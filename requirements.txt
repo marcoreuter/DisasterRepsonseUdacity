@@ -1,9 +1,0 @@
-django
-gunicorn
-django-heroku
-plotly
-pandas
-nltk
-flask
-joblib
-sqlalchemy

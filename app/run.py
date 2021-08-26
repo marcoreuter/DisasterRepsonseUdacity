@@ -4,15 +4,25 @@ import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+from nltk.stem.porter import PorterStemmer
+from nltk.corpus import stopwords
+import nltk
+nltk.download('stopwords')
 
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
-from sklearn.externals import joblib
+import joblib
 from sqlalchemy import create_engine
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import AdaBoostClassifier
+import re
 
 
-app = Flask(__name__)
+
+app = Flask(__name__,static_folder='static')
 
 def tokenize(text):
     """
@@ -39,7 +49,7 @@ engine = create_engine('sqlite:///../data/DisasterResponse.db')
 df = pd.read_sql_table('DisasterMessages', engine)
 
 # load model
-model = joblib.load("../models/classifier.pkl")
+model = joblib.load("../models/classifier.pklcls")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -64,7 +74,7 @@ def index():
             ],
 
             'layout': {
-                'title': 'Distribution of Disaster Messages',
+                'title': 'Category Classification of Disaster Messages in Data Set',
                 'yaxis': {
                     'title': "Count"
                 },
@@ -100,9 +110,8 @@ def go():
         classification_result=classification_results
     )
 
-
 def main():
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='0.0.0.0', port=3001, debug=False)
 
 
 if __name__ == '__main__':
