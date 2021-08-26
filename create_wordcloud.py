@@ -33,4 +33,4 @@ X,y,category_names = load_data("data/DisasterResponse.db")
 # Generate Wordcloud
 wordcloud = WordCloud(width=1000,height=400).generate(' '.join(X))
 # Generate plot
-wordcloud.to_file("wordcloud.png")
+wordcloud.to_file("/app/static/wordcloud.png")
