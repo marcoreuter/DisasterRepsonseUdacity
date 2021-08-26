@@ -48,17 +48,38 @@ The raw data is in form of natural language. It is processed using the following
 	 - AdaBoost Classifier
 
 This ML pipeline is stored and the final model is exported.
+##### The model training may take a long time to complete through the amount of folds in the cross validation and the size of the dataset!
 
 ### Evaluation
-The final model that performed best is XXXXXXX. The following f1scores, precision and recall are averaged over the 36 categories that are to be classified:
-- f1score:
-- precision:
-- recall: 
-
+The final model that performed best is a RandomForest Classifier. The best model was selected according to a weighted f1scores over the 36 categories that are to be classified. The weighted f1score of the best performing model is 0.57
 ### Deployment
 The final model from the modelling section is used to deploy a web app using Python as a back end. Flask, json and plotly are used to connect and create a front end. Several template for this are provided by Udacity and used in the project. The front end is available online under INSERT URL HERE. It shows some visualizations of summary statistics. It also allows the user to enter an arbitrary text that is classified into the 36 categories defined in the data set using the pre trained ML model.
 
 #### File Descriptions
+
+#### Root Directory:
+README.MD: Readme file
+create_wordcloud.py: Python script to create the wordcloud image for the website
+categories_example.png: Example picture for categories data
+messages_example.png: Example picture for messages data
+
+##### app directory:
+run.py: python script to deploy the website through flask
+###### app/static:
+wordcloud.png: wordcloud picture for the website
+###### app/templates
+go.html: template created by udacity to use in the project
+master.html: templace created by udacity to use in the project
+##### data directory:
+disaster_categories.csv: .csv file with categories
+disaster_messages: .csv file with messages
+DisasterResponse.db: SQL database with cleaned data
+process_data.py: python script to load and clean data
+
+##### models directory
+train_classifier.py: python script to train and save model
+classifier.pklcls: best model, careful, large file
+.gitattributes: needed to score large file in github
 
 #### Packages and data sources
 1) Packages used in the project:
