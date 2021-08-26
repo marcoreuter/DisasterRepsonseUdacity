@@ -53,7 +53,21 @@ This ML pipeline is stored and the final model is exported.
 ### Evaluation
 The final model that performed best is a RandomForest Classifier. The best model was selected according to a weighted f1scores over the 36 categories that are to be classified. The weighted f1score of the best performing model is 0.57
 ### Deployment
-The final model from the modelling section is used to deploy a web app using Python as a back end. Flask, json and plotly are used to connect and create a front end. Several template for this are provided by Udacity and used in the project. The front end is available online under INSERT URL HERE. It shows some visualizations of summary statistics. It also allows the user to enter an arbitrary text that is classified into the 36 categories defined in the data set using the pre trained ML model.
+The final model from the modelling section is used to deploy a web app using Python as a back end. Flask, json and plotly are used to connect and create a front end. Several template for this are provided by Udacity and used in the project.
+
+### Instructions:
+1. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pklcls`
+
+2. Run the following command in the app's directory to run your web app.
+    `python run.py`
+
+3. Go to http://0.0.0.0:3001/
+
 
 #### File Descriptions
 
