@@ -121,10 +121,19 @@ def build_model():
 
 def evaluate_model(model, X_test, Y_test, category_names):
     """
-    Function to evaluate the ML model
     
-    INPUTS:
-    model: sk
+
+    Parameters
+    ----------
+    model : the trained model
+    X_test : the X_test data from the data split
+    Y_test : the Y_test data from the data split
+    category_names : the names of the 36 categories
+
+    Returns
+    -------
+    None.
+
     """
     # predict on test data
     Y_pred = model.predict(X_test)
@@ -137,12 +146,28 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    """
+    
+    Parameters
+    ----------
+    model : the model estimate previously
+    model_filepath : the filepath to store the model
+
+    Returns
+    -------
+    None.
+
+    """
     # save the model to disk
     pickle.dump(model, open(model_filepath, 'wb'))
     pass
 
 
 def main():
+    """
+    the main routing to load data, build the model,
+    train the model, evaluate and save
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))

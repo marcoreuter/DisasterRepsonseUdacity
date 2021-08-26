@@ -94,6 +94,9 @@ def save_data(df, database_filename):
 
 
 def main():
+    """
+    main routine to load, clean and save data
+    """
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
