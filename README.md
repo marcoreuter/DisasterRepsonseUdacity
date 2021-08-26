@@ -58,28 +58,28 @@ The final model from the modelling section is used to deploy a web app using Pyt
 #### File Descriptions
 
 #### Root Directory:
-README.MD: Readme file
-create_wordcloud.py: Python script to create the wordcloud image for the website
-categories_example.png: Example picture for categories data
-messages_example.png: Example picture for messages data
+README.MD: Readme file  
+create_wordcloud.py: Python script to create the wordcloud image for the website  
+categories_example.png: Example picture for categories data  
+messages_example.png: Example picture for messages data  
 
 ##### app directory:
 run.py: python script to deploy the website through flask
 ###### app/static:
 wordcloud.png: wordcloud picture for the website
 ###### app/templates
-go.html: template created by udacity to use in the project
+go.html: template created by udacity to use in the project  
 master.html: templace created by udacity to use in the project
 ##### data directory:
-disaster_categories.csv: .csv file with categories
-disaster_messages: .csv file with messages
-DisasterResponse.db: SQL database with cleaned data
-process_data.py: python script to load and clean data
+disaster_categories.csv: .csv file with categories  
+disaster_messages: .csv file with messages  
+DisasterResponse.db: SQL database with cleaned data  
+process_data.py: python script to load and clean data  
 
 ##### models directory
-train_classifier.py: python script to train and save model
-classifier.pklcls: best model, careful, large file
-.gitattributes: needed to score large file in github
+train_classifier.py: python script to train and save model  
+classifier.pklcls: best model, careful, large file  
+.gitattributes: needed to score large file in github  
 
 #### Packages and data sources
 1) Packages used in the project:
