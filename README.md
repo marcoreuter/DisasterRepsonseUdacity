@@ -27,7 +27,6 @@ The single string of the "categories" column is split up into 36 columns that ei
 
 - The data set contains some duplicates. They have been removed.
 - The category classification contains some "2" values, which are likely typos. They have been removed.
-- The message column contains some messages that are not in english. The fasttext library is used to identify and remove those.
 
 The cleaned dataframe is stored in a SQL table for later use. This process is automated into an ETL pipeline.
 
@@ -98,7 +97,6 @@ classifier.pklcls: best model, careful, large file
 - Pandas
 - Numpy
 - SQLAlchemy
-- FastText
 - NLTK
 - sklearn
 - json
