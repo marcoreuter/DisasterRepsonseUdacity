@@ -137,10 +137,6 @@ def evaluate_model(model, X_test, Y_test, category_names):
     """
     # predict on test data
     Y_pred = model.predict(X_test)
-    # display results
-    for i in range(len(Y_test.columns)):
-        #print(classification_report(Y_test.iloc[:,i],Y_pred[:,i]))
-        i=i+1
     print(classification_report(Y_test,Y_pred,target_names=category_names))
     pass
 
